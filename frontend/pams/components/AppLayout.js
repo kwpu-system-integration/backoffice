@@ -1,16 +1,30 @@
-import { Menu, Input } from "antd";
+import { Menu, Input, Button } from "antd";
 import React from "react";
+import Link from "next/link";
 
 const AppLayout = ({ children }) => {
   return (
     <div>
       <Menu mode="horizontal">
-        <Menu.Item key="home">PAMS1</Menu.Item>
-        <Menu.Item key="profile">PAMS2</Menu.Item>
+        <Menu.Item key="home">
+          <Link href="/">
+            <a>홈</a>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="profile">
+          <Link href="/profile">
+            <a>프로필</a>
+          </Link>
+        </Menu.Item>
         <Menu.Item key="mail">
-          <Input.Search enterButton style={{verticalAlign: "middle"}} />
+          <Input.Search enterButton style={{ verticalAlign: "middle" }} />
         </Menu.Item>
       </Menu>
+      <Link href="/signup">
+        <a>
+          <Button>회원가입</Button>
+        </a>
+      </Link>
       {children}
     </div>
   );

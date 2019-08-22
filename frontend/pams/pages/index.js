@@ -1,6 +1,15 @@
 import React from "react";
+import Link from 'next/link'
+
 const Home = () => {
-  return <div>Hello, Next!</div>;
+  return (
+    <>
+      <Link href="/about">
+        <a>about page</a> 
+      </Link>
+      <div>Home page</div>;
+    </>
+  );
 };
 
 export default Home;

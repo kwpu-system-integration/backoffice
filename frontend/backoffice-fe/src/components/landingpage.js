@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Cell, Grid } from "react-mdl";
 import Button from '@material-ui/core/Button';
+import Login from './googleLogin'
+import Logout from './googleLogout'
 
 class Landingpage extends Component {
   render() {
@@ -24,10 +26,10 @@ class Landingpage extends Component {
                         <i className="fa fa-facebook-square common-margin" aria-hidden={true} />
                          <span className={"common_margin"}> facebook Login</span>
                     </Button>
-                    <Button variant="contained" color="secondary" >
-                        <i className="fa fa-google-plus-square" aria-hidden={true}/>
-                        <span className={"common_margin"}>Google Login</span>
-                    </Button>
+
+                    <Login />
+
+
                 </div>
             </div>
           </Cell>

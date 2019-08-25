@@ -1,25 +1,48 @@
-import React from "react";
-import Link from 'next/link'
-import Head from 'next/head'
-import AppLayout from '../components/AppLayout'
+import React, { Component } from "react";
+import Head from "next/head";
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
+import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 
-const Home = () => {
-  return (
-    <>
-    <Head>
-      <title>PAMS</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.js" />
-    </Head>
-    <AppLayout>
-      <Link href="/about">
-        <a>about page</a> 
-      </Link>
-      <div>Home page</div>;
-      </AppLayout>
-      
-    </>
-  );
-};
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Head>
+          <link rel="stylesheet" href="material.css" />
 
-export default Home;
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
+        </Head>
+
+        <div className="demo-big-content">
+          <Layout>
+            <Header title="Title" scroll>
+              <Navigation>
+                <a href="/">Link</a>
+                <a href="/">Link</a>
+                <a href="/">Link</a>
+                <a href="/">Link</a>
+              </Navigation>
+            </Header>
+            <Drawer title="Title">
+              <Navigation>
+                <a href="/">Link</a>
+                <a href="/">Link</a>
+                <a href="/">Link</a>
+                <a href="/">Link</a>
+              </Navigation>
+            </Drawer>
+            <Content>
+              <div className="page-content" />
+            </Content>
+          </Layout>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;

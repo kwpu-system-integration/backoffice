@@ -3,6 +3,7 @@ import { GoogleLogin } from "react-google-login";
 import { Container } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 class Login extends Component {
   constructor(props) {
@@ -16,14 +17,37 @@ class Login extends Component {
   }
 
   responseGoogle = res => {
-    console.log(res);
-    this.setState({
-      isLogin: true
-    }, () => {
-        if (this.state.isLogin){
-            window.location.href ="/payment"
-        }
-    });
+    // console.log(res);
+    // alert(res);
+    console.log(res.profileObj);
+    console.log(res.accessToken);
+
+    this.setState(
+      {
+        isLogin: true
+      },
+      () => {
+        axios
+            .post(`http://127.0.0.1:8000/login/check/`, {
+              header: "Access-Control-Allow-Origin",
+              email: res.profileObj.email,
+              name: res.profileObj.name
+            })
+            .then(response => {
+              if (response.data.initial_login) {
+                // 최초 로그인
+                window.location.href = '/signin'
+              }
+              else {
+                // 기존 사용자 로그인
+                window.location.href = '/payment'
+              }
+            })
+            .catch(error => {
+              console.log("failed", error);
+            });
+      }
+    );
   };
 
   responseFail = err => {
@@ -33,7 +57,7 @@ class Login extends Component {
   //disabled={renderProps.disabled}
 
   render() {
-      console.log(this.state)
+    console.log(this.state);
     return (
       <GoogleLogin
         clientId={

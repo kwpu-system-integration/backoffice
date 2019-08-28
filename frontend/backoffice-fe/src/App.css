@@ -91,3 +91,10 @@
 .link:hover {
   color: #00F
 }
+
+.input-margin {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 20px;
+}
